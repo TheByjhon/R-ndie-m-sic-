@@ -1,2 +1,2 @@
 # R-ndie-m-sic-
-Nueva fusiones músic 
+Nueva fusiones músicale 

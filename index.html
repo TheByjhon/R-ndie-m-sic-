@@ -13,7 +13,7 @@
             --neon-cyan: #06b6d4;
         }
 
-        /* Estilo Esmerilado Premium */
+        /* Estilo Esmerilado Premium (Glassmorphism) */
         .glass {
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(16px);
@@ -21,7 +21,7 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Cursor Personalizado Inofensivo (No bloquea clics) */
+        /* Cursor Personalizado Fluido y Sin Bloqueo de Clics */
         .cursor-dot, .cursor-outline {
             position: fixed;
             top: 0;
@@ -29,7 +29,7 @@
             transform: translate(-50%, -50%);
             border-radius: 50%;
             z-index: 9999;
-            pointer-events: none;
+            pointer-events: none; /* Crucial para permitir interactuar con botones debajo */
             transition: width 0.3s, height 0.3s, background-color 0.3s;
         }
         .cursor-dot { width: 6px; height: 6px; background-color: var(--neon-cyan); }
@@ -40,26 +40,27 @@
             border-color: transparent;
         }
 
-        /* Contornos de relieve en sintonía con el estilo de la app */
+        /* Contorno de Relieve y Brillo de Vanguardia */
         .neon-border-glow {
             box-shadow: 0 0 0px rgba(168, 85, 247, 0), inset 0 0 0px rgba(6, 118, 212, 0);
-            transition: box-shadow 0.5s ease, border-color 0.5s ease;
+            transition: box-shadow 0.5s ease, border-color 0.5s ease, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .gallery-item:hover .neon-border-glow {
             border-color: var(--neon-cyan);
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.35), inset 0 0 10px rgba(168, 85, 247, 0.2);
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.35), inset 0 0 15px rgba(168, 85, 247, 0.2);
         }
 
-        /* Cápsulas Aerodinámicas con Fundido de Color */
+        /* Semi Cápsulas Aerodinámicas con Fundido de Color */
         .capsule-aerodynamic {
-            padding: 6px 18px;
+            padding: 6px 20px;
             border-radius: 50px;
             display: inline-flex;
             align-items: center;
             overflow: hidden;
             white-space: nowrap;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: linear-gradient(270deg, rgba(168, 85, 247, 0.4), rgba(6, 182, 212, 0.4), rgba(168, 85, 247, 0.4));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(270deg, rgba(168, 85, 247, 0.45), rgba(6, 182, 212, 0.45), rgba(168, 85, 247, 0.45));
             background-size: 600% 600%;
             animation: colorFadeGlow 8s ease infinite;
         }
@@ -70,14 +71,14 @@
             100%{background-position:0% 50%}
         }
 
-        /* Texto en Movimiento Infinito dentro de la cápsula (Marquee) */
+        /* Texto en Movimiento Lineal Infinito (Marquee) */
         .marquee-text {
             display: inline-block;
             padding-left: 100%;
-            animation: marqueeLinear 10s linear infinite;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
+            animation: marqueeLinear 12s linear infinite;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
         }
         @keyframes marqueeLinear {
@@ -85,9 +86,9 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* Zoom Dinámico Controlado */
+        /* Contenedor de Zoom de Fondo por Scroll Controlado */
         .zoomable-bg {
-            transition: transform 0.1s ease-out;
+            transition: transform 0.15s ease-out;
             will-change: transform;
         }
 
@@ -103,12 +104,12 @@
 
     <nav class="fixed w-full z-50 glass py-4 px-8 flex justify-between items-center">
         <div class="font-bold text-xl tracking-tighter">
-            [span_11](start_span)PROD<span style="color: var(--neon-purple);">NAME</span>[span_11](end_span)
+            PROD<span style="color: var(--neon-purple);">NAME</span>
         </div>
         <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em]">
-            [span_12](start_span)<a href="#hero" class="hover:text-[--neon-purple] transition">Inicio</a>[span_12](end_span)
-            [span_13](start_span)<a href="#featured" class="hover:text-[--neon-purple] transition">Destacado</a>[span_13](end_span)
-            [span_14](start_span)<a href="#shop" class="hover:text-[--neon-purple] transition">Catálogo</a>[span_14](end_span)
+            <a href="#hero" class="hover:text-[--neon-purple] transition">Inicio</a>
+            <a href="#featured" class="hover:text-[--neon-purple] transition">Destacado</a>
+            <a href="#shop" class="hover:text-[--neon-purple] transition">Catálogo</a>
         </div>
         <div class="flex items-center gap-4">
             <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="text-[10px] border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition uppercase font-bold tracking-wider flex items-center gap-2">
@@ -120,20 +121,20 @@
 
     <section id="hero" class="relative w-screen min-h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0 bg-black">
-            [span_15](start_span)<img id="hero-img" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&q=80&w=1920" class="zoomable-bg w-full h-full object-cover opacity-60" alt="Future Sounds">[span_15](end_span)
-            [span_16](start_span)<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent pointer-events-none"></div>[span_16](end_span)
+            <img id="hero-img" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&q=80&w=1920" class="zoomable-bg w-full h-full object-cover opacity-65" alt="Future Sounds">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none"></div>
         </div>
         
-        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full h-full pt-16">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full h-full pt-20">
             <div>
-                <div class="capsule-aerodynamic mb-6 max-w-[220px]">
+                <div class="capsule-aerodynamic mb-6 max-w-[240px]">
                     <div class="marquee-text text-cyan-400">En la atmósfera • Seguimos bajo control •</div>
                 </div>
                 <h1 class="font-black vanguard-title text-6xl md:text-8xl leading-none mb-6 tracking-tighter">
-                    [span_17](start_span)FUTURE <br> <span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">SOUNDS</span>[span_17](end_span)
+                    FUTURE <br> <span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">SOUNDS</span>
                 </h1>
-                [span_18](start_span)<p class="text-gray-300 max-w-md mb-8 font-light italic text-sm">Usa la rueda del ratón o desliza con dos dedos sobre la pantalla para activar el zoom-in detallado de la obra de arte.</p>[span_18](end_span)
-                [span_19](start_span)<a href="#shop" class="bg-white text-black px-10 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-[--neon-purple] hover:text-white transition inline-block">Explorar Arte Completo</a>[span_19](end_span)
+                <p class="text-gray-300 max-w-md mb-8 font-light italic text-sm">Deslice dos dedos o use la rueda del ratón arriba para aplicar zoom-in interactivo sobre los detalles de la obra.</p>
+                <a href="#shop" class="bg-white text-black px-10 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-[--neon-purple] hover:text-white transition inline-block">Ver Catálogo Completo</a>
             </div>
         </div>
     </section>
@@ -142,205 +143,205 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="glass p-8 md:p-12 rounded-[40px] flex flex-col items-center max-w-4xl mx-auto">
                 <div class="w-full text-center">
-                    <div class="capsule-aerodynamic mb-6 max-w-[200px] mx-auto">
+                    <div class="capsule-aerodynamic mb-6 max-w-[210px] mx-auto">
                         <div class="marquee-text text-purple-400">En descenso • Esperando la señal •</div>
                     </div>
-                    [span_20](start_span)<h2 class="text-4xl md:text-6xl mb-8 italic font-black tracking-wide">CYBER VORTEX</h2>[span_20](end_span)
+                    <h2 class="text-4xl md:text-6xl mb-8 italic font-black tracking-wide">CYBER VORTEX</h2>
                     
                     <div class="bg-white/5 p-6 rounded-3xl border border-white/10 mb-8">
                         <div class="h-1 w-full bg-white/10 rounded-full mb-6 overflow-hidden">
-                            [span_21](start_span)<div id="main-progress" class="h-full bg-gradient-to-r from-purple-500 to-cyan-500 w-0"></div>[span_21](end_span)
+                            <div id="main-progress" class="h-full bg-gradient-to-r from-purple-500 to-cyan-500 w-0"></div>
                         </div>
                         <div class="flex items-center justify-center gap-6">
                             <button onclick="toggleMainPlay()" class="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition">
-                                [span_22](start_span)<i data-lucide="play" id="play-icon"></i>[span_22](end_span)
+                                <i data-lucide="play" id="play-icon"></i>
                             </button>
-                            [span_23](start_span)<span id="current-time" class="font-mono text-xs text-gray-400">00:00 / 00:00</span>[span_23](end_span)
+                            <span id="current-time" class="font-mono text-xs text-gray-400">00:00 / 00:00</span>
                         </div>
                     </div>
-                    [span_24](start_span)<a href="#" class="bg-purple-600 px-12 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-lg shadow-purple-500/20 hover:brightness-125 transition inline-block">Adquirir Licencia Maestra — $49</a>[span_24](end_span)
+                    <a href="#" class="bg-purple-600 px-12 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-lg shadow-purple-500/20 hover:brightness-125 transition inline-block">Obtener Licencia — $49</a>
                 </div>
             </div>
         </div>
-        [span_25](start_span)<audio id="featured-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>[span_25](end_span)
+        <audio id="featured-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
     </section>
 
     <section id="shop" class="py-24 relative w-screen min-h-screen">
         <div class="container mx-auto px-6">
-            <div class="mb-16">
-                [span_26](start_span)<h2 class="text-3xl tracking-[0.3em] uppercase font-bold">VANGUARD <span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">COLLECTION</span></h2>[span_26](end_span)
-                [span_27](start_span)<p class="text-gray-500 text-[10px] uppercase mt-2">Toque o pase el cursor para activar relieves reactivos y preescuchas de audio.</p>[span_27](end_span)
+            <div class="mb-20">
+                <h2 class="text-2xl tracking-[0.3em] uppercase font-bold">Beat <span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">Store</span></h2>
+                <p class="text-gray-500 text-[10px] uppercase mt-2">Toque para activar la reacción táctil del contorno texturizado.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                 <div class="gallery-item group">
-                    [span_28](start_span)[span_29](start_span)<div class="relative overflow-hidden glass rounded-tr-[80px] aspect-[4/5] border border-white/10 neon-border-glow">[span_28](end_span)[span_29](end_span)
-                        [span_30](start_span)<img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" alt="Neon Nights">[span_30](end_span)
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[150px]">
+                    <div class="relative overflow-hidden glass rounded-tr-[80px] aspect-[4/5] border border-white/10 neon-border-glow">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Neon Nights">
+                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
                             <div class="marquee-text text-purple-400">Entre neblinas • Texturas Híbridas •</div>
                         </div>
-                        [span_31](start_span)<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">[span_31](end_span)
-                            [span_32](start_span)<button class="bg-white text-black p-4 rounded-full hover:scale-110 transition shadow-xl"><i data-lucide="play"></i></button>[span_32](end_span)
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
                         </div>
                     </div>
                     <div class="mt-4 flex justify-between items-center px-2">
                         <div>
-                            [span_33](start_span)<h4 class="text-sm font-bold tracking-wider">NEON NIGHTS</h4>[span_33](end_span)
-                            [span_34](start_span)<p class="text-[9px] text-gray-500 uppercase tracking-widest">140 BPM / PHONK</p>[span_34](end_span)
+                            <h4 class="text-sm font-bold tracking-wide">NEON NIGHTS</h4>
+                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">140 BPM / PHONK</p>
                         </div>
-                        [span_35](start_span)<span style="color: var(--neon-cyan);" class="font-bold text-lg">$29</span>[span_35](end_span)
+                        <span style="color: var(--neon-cyan);" class="font-bold text-lg">$29</span>
                     </div>
                 </div>
 
                 <div class="gallery-item group">
-                    [span_36](start_span)<div class="relative overflow-hidden glass rounded-2xl aspect-[4/5] border border-white/10 neon-border-glow">[span_36](end_span)
-                        [span_37](start_span)<img src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" alt="Liquid State">[span_37](end_span)
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[150px]">
+                    <div class="relative overflow-hidden glass rounded-2xl aspect-[4/5] border border-white/10 neon-border-glow">
+                        <img src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Liquid State">
+                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
                             <div class="marquee-text text-cyan-400">Con sentimientos • Inmersivo •</div>
                         </div>
-                        [span_38](start_span)<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">[span_38](end_span)
-                            [span_39](start_span)<button class="bg-white text-black p-4 rounded-full hover:scale-110 transition shadow-xl"><i data-lucide="play"></i></button>[span_39](end_span)
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
                         </div>
                     </div>
                     <div class="mt-4 flex justify-between items-center px-2">
                         <div>
-                            [span_40](start_span)<h4 class="text-sm font-bold tracking-wider" style="color: var(--neon-purple);">LIQUID STATE</h4>[span_40](end_span)
-                            [span_41](start_span)<p class="text-[9px] text-gray-500 uppercase tracking-widest">128 BPM / TECHNO</p>[span_41](end_span)
+                            <h4 class="text-sm font-bold tracking-wide" style="color: var(--neon-purple);">LIQUID STATE</h4>
+                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">128 BPM / TECHNO</p>
                         </div>
-                        [span_42](start_span)<span class="text-white font-bold text-lg">$35</span>[span_42](end_span)
+                        <span class="text-white font-bold text-lg">$35</span>
                     </div>
                 </div>
 
                 <div class="gallery-item group">
-                    [span_43](start_span)<div class="relative overflow-hidden glass rounded-tl-[100px] aspect-[4/5] border border-white/10 neon-border-glow">[span_43](end_span)
-                        [span_44](start_span)<img src="https://images.unsplash.com/photo-1514525253361-bee8a48790c7?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" alt="Street Soul">[span_44](end_span)
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[150px]">
+                    <div class="relative overflow-hidden glass rounded-tl-[100px] aspect-[4/5] border border-white/10 neon-border-glow">
+                        <img src="https://images.unsplash.com/photo-1514525253361-bee8a48790c7?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Street Soul">
+                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
                             <div class="marquee-text text-purple-400">Los ghetto • Elegancia Callejera •</div>
                         </div>
-                        [span_45](start_span)<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">[span_45](end_span)
-                            [span_46](start_span)<button class="bg-white text-black p-4 rounded-full hover:scale-110 transition shadow-xl"><i data-lucide="play"></i></button>[span_46](end_span)
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
                         </div>
                     </div>
                     <div class="mt-4 flex justify-between items-center px-2">
                         <div>
-                            [span_47](start_span)<h4 class="text-sm font-bold tracking-wider">STREET SOUL</h4>[span_47](end_span)
-                            [span_48](start_span)<p class="text-[9px] text-gray-500 uppercase tracking-widest">95 BPM / LO-FI</p>[span_48](end_span)
+                            <h4 class="text-sm font-bold tracking-wide">STREET SOUL</h4>
+                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">95 BPM / LO-FI</p>
                         </div>
-                        [span_49](start_span)<span style="color: var(--neon-cyan);" class="font-bold text-lg">$25</span>[span_49](end_span)
+                        <span style="color: var(--neon-cyan);" class="font-bold text-lg">$25</span>
                     </div>
                 </div>
 
                 <div class="gallery-item group">
-                    <div class="relative overflow-hidden glass rounded-br-[100px] aspect-[4/5] border border-white/10 neon-border-glow">
-                        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" alt="Sinfonía R&B">
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[150px]">
+                    <div class="relative overflow-hidden glass rounded-br-[80px] aspect-[4/5] border border-white/10 neon-border-glow">
+                        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Sinfonía R&B">
+                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
                             <div class="marquee-text text-cyan-400">Notas al viento • Sinfonía R&B •</div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition shadow-xl"><i data-lucide="play"></i></button>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
                         </div>
                     </div>
                     <div class="mt-4 flex justify-between items-center px-2">
                         <div>
-                            <h4 class="text-sm font-bold tracking-wider">CYBER SYMPHONY</h4>
-                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">105 BPM / R&B NEON</p>
+                            <h4 class="text-sm font-bold tracking-wide">CYBER SYMPHONY</h4>
+                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">102 BPM / R&B NEON</p>
                         </div>
                         <span style="color: var(--neon-cyan);" class="font-bold text-lg">$39</span>
                     </div>
                 </div>
 
                 <div class="gallery-item group">
-                    <div class="relative overflow-hidden glass rounded-none aspect-[4/5] border border-white/10 neon-border-glow" style="border-radius: 40px 0px 40px 0px;">
-                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" alt="Esencia R&B">
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[150px]">
+                    <div class="relative overflow-hidden glass aspect-[4/5] border border-white/10 neon-border-glow" style="border-radius: 40px 0px 40px 0px;">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Esencia R&B">
+                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
                             <div class="marquee-text text-purple-400">En estado puro • Esencia R&B •</div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition shadow-xl"><i data-lucide="play"></i></button>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
                         </div>
                     </div>
                     <div class="mt-4 flex justify-between items-center px-2">
                         <div>
-                            <h4 class="text-sm font-bold tracking-wider" style="color: var(--neon-purple);">PURE ESSENCE</h4>
-                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">98 BPM / SOUL INDIE</p>
+                            <h4 class="text-sm font-bold tracking-wide" style="color: var(--neon-purple);">PURE ESSENCE</h4>
+                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">96 BPM / INDIE SOUL</p>
                         </div>
-                        <span class="text-white font-bold text-lg">$45</span>
+                        <span class="text-white font-bold text-lg">$42</span>
                     </div>
                 </div>
 
                 <div class="gallery-item group">
                     <div class="relative overflow-hidden glass rounded-bl-[80px] aspect-[4/5] border border-white/10 neon-border-glow">
-                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" alt="Atmosphere">
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[150px]">
-                            <div class="marquee-text text-cyan-400">En la atmósfera • Sub-Zero •</div>
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Atmósfera">
+                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
+                            <div class="marquee-text text-cyan-400">En la atmósfera • Sub-Zero Vol •</div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition shadow-xl"><i data-lucide="play"></i></button>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
                         </div>
                     </div>
                     <div class="mt-4 flex justify-between items-center px-2">
                         <div>
-                            <h4 class="text-sm font-bold tracking-wider">NEON ECLIPSE</h4>
-                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">130 BPM / PHONK TRAP</p>
+                            <h4 class="text-sm font-bold tracking-wide">NEON ECLIPSE</h4>
+                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">134 BPM / PHONK TRAP</p>
                         </div>
-                        <span style="color: var(--neon-cyan);" class="font-bold text-lg">$32</span>
+                        <span style="color: var(--neon-cyan);" class="font-bold text-lg">$34</span>
                     </div>
                 </div>
             </div>
-        [span_50](start_span)</div>[span_50](end_span)
+        </div>
     </section>
 
-    <div id="video-modal" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md hidden justify-center items-center p-4">
+    <div id="video-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md hidden justify-center items-center p-4">
         <div class="relative w-full max-w-3xl aspect-video glass rounded-2xl overflow-hidden border border-white/20">
             <button onclick="closeVideoModal()" class="absolute top-4 right-4 bg-black/60 text-white p-2 rounded-full hover:bg-white hover:text-black transition z-50">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
-            <iframe id="modal-iframe" class="w-full h-full" src="" title="Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="modal-iframe" class="w-full h-full" src="" title="Reproductor de Video Integrado" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 
     <footer class="py-12 border-t border-white/5 text-center text-[10px] tracking-[0.4em] text-gray-600">
-        &copy; 2026 PRODNAME STUDIO | [span_51](start_span)VANGUARD EDITION[span_51](end_span)
+        &copy; 2026 PRODNAME STUDIO | VANGUARD EDITION
     </footer>
 
     <script>
-        // Inicializar Iconos Inteligentes Lucide
-        [span_52](start_span)lucide.createIcons();[span_52](end_span)
+        // Inicializar Iconografía Lucide
+        lucide.createIcons();
 
-        // Controladores del Cursor Estilizado
-        [span_53](start_span)const dot = document.querySelector('.cursor-dot');[span_53](end_span)
-        [span_54](start_span)const outline = document.querySelector('.cursor-outline');[span_54](end_span)
+        // Control Dinámico del Cursor Estilizado
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
 
-        [span_55](start_span)window.addEventListener('mousemove', (e) => {[span_55](end_span)
+        window.addEventListener('mousemove', (e) => {
             dot.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
             outline.animate(
                 { transform: `translate(${e.clientX - 17}px, ${e.clientY - 17}px)` }, 
-                { duration: 250, fill: "forwards" }
-            [span_56](start_span));[span_56](end_span)
-        [span_57](start_span)});[span_57](end_span)
-
-        [span_58](start_span)document.querySelectorAll('a, button, .gallery-item').forEach(el => {[span_58](end_span)
-            [span_59](start_span)el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));[span_59](end_span)
-            [span_60](start_span)el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));[span_60](end_span)
+                { duration: 240, fill: "forwards" }
+            );
         });
 
-        // --- SISTEMA DE ZOOM INTELLIGENT SCROLL (Ratón y Táctil) ---
+        document.querySelectorAll('a, button, .gallery-item').forEach(el => {
+            el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
+        });
+
+        // --- SISTEMA INTELLIGENT SCROLL ZOOM (Ratón y Táctil Multifinger) ---
         const heroImg = document.getElementById('hero-img');
         let currentScale = 1.0;
-        const maxScale = 2.2;
+        const maxScale = 2.5;
         const minScale = 1.0;
 
-        // Sensibilidad del zoom para ratón
+        // Control por rueda del ratón en zona Hero
         window.addEventListener('wheel', (e) => {
             if (window.scrollY < window.innerHeight / 2) { 
-                e.preventDefault(); // Prioriza el zoom fino si estás arriba
-                currentScale += e.deltaY * -0.0015;
+                e.preventDefault(); 
+                currentScale += e.deltaY * -0.0018;
                 currentScale = Math.max(minScale, Math.min(maxScale, currentScale));
                 heroImg.style.transform = `scale(${currentScale})`;
             }
         }, { passive: false });
 
-        // Soporte de zoom táctil multitouch (Pinza)
+        // Control por gesto táctil de pinza (Zoom táctil nativo)
         let touchStartDist = 0;
         window.addEventListener('touchstart', (e) => {
             if (e.touches.length === 2) {
@@ -357,28 +358,28 @@
                     e.touches[0].clientX - e.touches[1].clientX,
                     e.touches[0].clientY - e.touches[1].clientY
                 );
-                const delta = (currentDist - touchStartDist) * 0.005;
+                const delta = (currentDist - touchStartDist) * 0.006;
                 currentScale = Math.max(minScale, Math.min(maxScale, currentScale + delta));
                 heroImg.style.transform = `scale(${currentScale})`;
                 touchStartDist = currentDist;
             }
         });
 
-        [span_61](start_span)// Parallax Sincronizado Suave con el Scroll de Fondo[span_61](end_span)
-        [span_62](start_span)window.addEventListener('scroll', () => {[span_62](end_span)
-            [span_63](start_span)const y = window.scrollY;[span_63](end_span)
-            [span_64](start_span)const isMobile = window.innerWidth < 768;[span_64](end_span)
-            const m = isMobile ? [span_65](start_span)0 : 1;[span_65](end_span)
+        // Parallax Suave Sincronizado para Textos
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            const isMobile = window.innerWidth < 768;
+            const m = isMobile ? 0 : 1;
             if(document.querySelector('.vanguard-title')) {
-                [span_66](start_span)document.querySelector('.vanguard-title').style.transform = `translateY(${y * 0.12 * m}px)`;[span_66](end_span)
+                document.querySelector('.vanguard-title').style.transform = `translateY(${y * 0.14 * m}px)`;
             }
         });
 
-        [span_67](start_span)// Lógica del Reproductor de Audio nativo[span_67](end_span)
-        [span_68](start_span)const audio = document.getElementById('featured-audio');[span_68](end_span)
-        [span_69](start_span)const progress = document.getElementById('main-progress');[span_69](end_span)
-        [span_70](start_span)const timeText = document.getElementById('current-time');[span_70](end_span)
-        [span_71](start_span)const playIcon = document.getElementById('play-icon');[span_71](end_span)
+        // Gestión del Reproductor de Audio Semanal
+        const audio = document.getElementById('featured-audio');
+        const progress = document.getElementById('main-progress');
+        const timeText = document.getElementById('current-time');
+        const playIcon = document.getElementById('play-icon');
 
         function formatTime(secs) {
             let minutes = Math.floor(secs / 60);
@@ -386,30 +387,30 @@
             return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         }
 
-        [span_72](start_span)function toggleMainPlay() {[span_72](end_span)
-            [span_73](start_span)if (audio.paused) {[span_73](end_span)
-                [span_74](start_span)audio.play();[span_74](end_span)
-                [span_75](start_span)playIcon.setAttribute('data-lucide', 'pause');[span_75](end_span)
-            [span_76](start_span)} else {[span_76](end_span)
-                [span_77](start_span)audio.pause();[span_77](end_span)
-                [span_78](start_span)playIcon.setAttribute('data-lucide', 'play');[span_78](end_span)
+        function toggleMainPlay() {
+            if (audio.paused) {
+                audio.play();
+                playIcon.setAttribute('data-lucide', 'pause');
+            } else {
+                audio.pause();
+                playIcon.setAttribute('data-lucide', 'play');
             }
-            [span_79](start_span)lucide.createIcons();[span_79](end_span)
-        [span_80](start_span)}
+            lucide.createIcons();
+        }
 
         audio.addEventListener('loadedmetadata', () => {
             timeText.innerText = `0:00 / ${formatTime(audio.duration)}`;
         });
 
-        audio.addEventListener('timeupdate', () => {[span_80](end_span)
+        audio.addEventListener('timeupdate', () => {
             if (audio.duration) {
-                [span_81](start_span)const pct = (audio.currentTime / audio.duration) * 100;[span_81](end_span)
-                [span_82](start_span)progress.style.width = pct + '%';[span_82](end_span)
+                const pct = (audio.currentTime / audio.duration) * 100;
+                progress.style.width = pct + '%';
                 timeText.innerText = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
             }
-        [span_83](start_span)});[span_83](end_span)
+        });
 
-        // --- MANEJO DE VIDEO INTEGRADO DE REDES ---
+        // --- MANEJO DEL MODAL DE VIDEO INTEGRADO ---
         const videoModal = document.getElementById('video-modal');
         const modalIframe = document.getElementById('modal-iframe');
 
@@ -420,7 +421,7 @@
 
         function closeVideoModal() {
             videoModal.style.display = 'none';
-            modalIframe.src = ''; // Detiene el video por completo al cerrar
+            modalIframe.src = ''; // Limpia el buffer para detener el audio al cerrar
         }
     </script>
 </body>

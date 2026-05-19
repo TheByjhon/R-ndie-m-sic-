@@ -1,428 +1,426 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRODNAME STUDIO | VANGUARD EDITION</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>
-        :root {
-            --neon-purple: #a855f7;
-            --neon-cyan: #06b6d4;
-        }
-
-        /* Estilo Esmerilado Premium (Glassmorphism) */
-        .glass {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        /* Cursor Personalizado Fluido y Sin Bloqueo de Clics */
-        .cursor-dot, .cursor-outline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none; /* Crucial para permitir interactuar con botones debajo */
-            transition: width 0.3s, height 0.3s, background-color 0.3s;
-        }
-        .cursor-dot { width: 6px; height: 6px; background-color: var(--neon-cyan); }
-        .cursor-outline { width: 34px; height: 34px; border: 1px solid var(--neon-purple); }
-        .cursor-outline.cursor-hover {
-            width: 55px; height: 55px;
-            background-color: rgba(168, 85, 247, 0.15);
-            border-color: transparent;
-        }
-
-        /* Contorno de Relieve y Brillo de Vanguardia */
-        .neon-border-glow {
-            box-shadow: 0 0 0px rgba(168, 85, 247, 0), inset 0 0 0px rgba(6, 118, 212, 0);
-            transition: box-shadow 0.5s ease, border-color 0.5s ease, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .gallery-item:hover .neon-border-glow {
-            border-color: var(--neon-cyan);
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.35), inset 0 0 15px rgba(168, 85, 247, 0.2);
-        }
-
-        /* Semi Cápsulas Aerodinámicas con Fundido de Color */
-        .capsule-aerodynamic {
-            padding: 6px 20px;
-            border-radius: 50px;
-            display: inline-flex;
-            align-items: center;
-            overflow: hidden;
-            white-space: nowrap;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: linear-gradient(270deg, rgba(168, 85, 247, 0.45), rgba(6, 182, 212, 0.45), rgba(168, 85, 247, 0.45));
-            background-size: 600% 600%;
-            animation: colorFadeGlow 8s ease infinite;
-        }
-
-        @keyframes colorFadeGlow {
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
-        }
-
-        /* Texto en Movimiento Lineal Infinito (Marquee) */
-        .marquee-text {
-            display: inline-block;
-            padding-left: 100%;
-            animation: marqueeLinear 12s linear infinite;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-        }
-        @keyframes marqueeLinear {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
-        }
-
-        /* Contenedor de Zoom de Fondo por Scroll Controlado */
-        .zoomable-bg {
-            transition: transform 0.15s ease-out;
-            will-change: transform;
-        }
-
-        html { scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: var(--neon-purple); border-radius: 10px; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&ndie - The New Era of Sound</title>
+    
+    <!-- Librerías de Prestigio: Fuentes de Moda y Swiper Vertical -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- ==========================================
+         ESTILOS DE ALTA COSTURA (CSS)
+         ========================================== -->
+    <style>
+        /* Reset y Atmósfera Profunda */
+        html, body {
+            position: relative;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #020204;
+            color: #f5f5f0; /* Verde Marfil Suave */
+            overflow: hidden;
+        }
+        /* Tipografías Artísticas */
+        h1, h2, .brand-title {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 6px;
+        }
+        .poesia-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+        /* Carrusel Vertical a Pantalla Completa */
+        .swiper {
+            width: 100vw;
+            height: 100vh;
+        }
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end; /* Empuja el texto abajo para lucir la foto */
+            position: relative;
+            background-color: #020204;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain; /* Abre la pantalla de arriba a abajo con fotos enteras */
+            height: 100vh;
+            width: 100vw;
+        }
+        /* Degradado de pasarela para proteger la lectura */
+        .swiper-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(2,2,4,0.95) 0%, rgba(2,2,4,0.2) 50%, rgba(2,2,4,0.6) 100%);
+            z-index: 1;
+        }
+        /* Contenedor de Texto Flotante en Zona Baja */
+        .manifiesto-artistico {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            width: 85%;
+            margin-bottom: 80px; /* Mega espacio inferior sobrio */
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2); /* Línea liliácea sutil */
+            animation: eleganceFloat 5s ease-in-out infinite;
+        }
+        @keyframes eleganceFloat {
+            0% { transform: translateY(0px); opacity: 0.95; }
+            50% { transform: translateY(-6px); opacity: 1; }
+            100% { transform: translateY(0px); opacity: 0.95; }
+        }
+        /* Títulos y Concepto R&ndie */
+        .manifiesto-artistico h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #f5f5f0, #c084fc, #2dd4bf); /* Marfil, Liliáceo y Turquesa */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(192, 132, 252, 0.1);
+        }
+        .manifiesto-artistico p {
+            font-size: 1.3rem;
+            color: #d1d5db;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        /* Botón de Interacción Minimalista */
+        .boton-alta-gama {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 35px;
+            background: transparent;
+            color: #f5f5f0;
+            border: 1px solid #2dd4bf; /* Borde Turquesa Neón */
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border-radius: 0px; /* Esquinas rectas para mayor elegancia */
+            transition: all 0.4s ease;
+        }
+        .boton-alta-gama:hover {
+            background: #c084fc;
+            border-color: #c084fc;
+            color: #020204;
+            box-shadow: 0 0 25px rgba(192, 132, 252, 0.6);
+        }
+        /* Estructura Especial para la Diapositiva Final (Contacto y Redes) */
+        .slide-final {
+            justify-content: center !important;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .grid-final {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+        /* Formulario Minimalista */
+        .formulario-lujo {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(45, 212, 191, 0.2); /* Borde turquesa sutil */
+            padding: 35px;
+            box-sizing: border-box;
+        }
+        .formulario-lujo input, .formulario-lujo textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(245, 245, 240, 0.3);
+            margin-bottom: 25px;
+            padding: 10px 0;
+            color: #f5f5f0;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .formulario-lujo input:focus, .formulario-lujo textarea:focus {
+            border-bottom-color: #c084fc; /* Cambio a Liliáceo al escribir */
+        }
+        /* Redes Sociales Glamourosas */
+        .redes-container {
+            display: flex;
+            gap: 30px;
+        }
+        .redes-container a {
+            color: #f5f5f0;
+            font-size: 1.8rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .redes-container a:hover {
+            color: #2dd4bf;
+            transform: translateY(-5px);
+        }
+        /* Indicadores de dirección vertical refinados */
+        .swiper-button-next, .swiper-button-prev {
+            color: #f5f5f0 !important;
+            opacity: 0.2;
+            left: 50% !important;
+            transform: translateX(-50%);
+        }
+        .swiper-button-prev { top: 30px !important; transform: translateX(-50%) rotate(90deg); }
+        .swiper-button-next { top: auto !important; bottom: 20px !important; transform: translateX(-50%) rotate(90deg); }
+        /* ==========================================
+           WIDGET INTELIGENTE DE IA
+           ========================================== */
+        .ia-widget-boton {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border: 1px solid #c084fc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #c084fc;
+            cursor: pointer;
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+        .ia-widget-boton:hover {
+            background: #c084fc;
+            color: #020204;
+            box-shadow: 0 0 20px rgba(192, 132, 252, 0.4);
+        }
+        .ia-chat-ventana {
+            position: fixed;
+            bottom: 95px;
+            right: 30px;
+            width: 330px;
+            height: 430px;
+            background: rgba(2, 2, 4, 0.98);
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 9998;
+        }
+        .ia-chat-header {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ia-chat-mensajes { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+        .mensaje { padding: 10px 14px; font-size: 13px; max-width: 80%; line-height: 1.5; }
+        .msg-ia { background: rgba(255,255,255,0.03); color: #f5f5f0; align-self: flex-start; border-left: 2px solid #c084fc; }
+        .msg-usuario { background: rgba(45, 212, 191, 0.1); color: #2dd4bf; align-self: flex-end; border-right: 2px solid #2dd4bf; }
+        .ia-chat-input-area { padding: 12px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; gap: 8px; }
+        .ia-chat-input-area input { flex: 1; background: transparent; border: 1px solid rgba(255,255,255,0.1); padding: 8px 12px; color: white; font-size: 12px; outline: none; }
+        .ia-chat-input-area button { background: transparent; border: 1px solid #2dd4bf; color: #2dd4bf; padding: 0 15px; cursor: pointer; }
+    </style>
 </head>
-<body class="bg-black text-white selection:bg-purple-500 selection:text-white overflow-x-hidden">
-    
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
-    <nav class="fixed w-full z-50 glass py-4 px-8 flex justify-between items-center">
-        <div class="font-bold text-xl tracking-tighter">
-            PROD<span style="color: var(--neon-purple);">NAME</span>
-        </div>
-        <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em]">
-            <a href="#hero" class="hover:text-[--neon-purple] transition">Inicio</a>
-            <a href="#featured" class="hover:text-[--neon-purple] transition">Destacado</a>
-            <a href="#shop" class="hover:text-[--neon-purple] transition">Catálogo</a>
-        </div>
-        <div class="flex items-center gap-4">
-            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="text-[10px] border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition uppercase font-bold tracking-wider flex items-center gap-2">
-                <i data-lucide="youtube" class="w-3 h-3"></i> Ver Video
-            </button>
-            <button class="border border-[--neon-cyan] text-[--neon-cyan] px-6 py-2 rounded-full text-[10px] font-bold hover:bg-[--neon-cyan] hover:text-black transition uppercase">Carrito (0)</button>
-        </div>
-    </nav>
-
-    <section id="hero" class="relative w-screen min-h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0 bg-black">
-            <img id="hero-img" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&q=80&w=1920" class="zoomable-bg w-full h-full object-cover opacity-65" alt="Future Sounds">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none"></div>
-        </div>
-        
-        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full h-full pt-20">
-            <div>
-                <div class="capsule-aerodynamic mb-6 max-w-[240px]">
-                    <div class="marquee-text text-cyan-400">En la atmósfera • Seguimos bajo control •</div>
-                </div>
-                <h1 class="font-black vanguard-title text-6xl md:text-8xl leading-none mb-6 tracking-tighter">
-                    FUTURE <br> <span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">SOUNDS</span>
-                </h1>
-                <p class="text-gray-300 max-w-md mb-8 font-light italic text-sm">Deslice dos dedos o use la rueda del ratón arriba para aplicar zoom-in interactivo sobre los detalles de la obra.</p>
-                <a href="#shop" class="bg-white text-black px-10 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-[--neon-purple] hover:text-white transition inline-block">Ver Catálogo Completo</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="featured" class="py-32 relative w-screen min-h-screen flex items-center justify-center">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="glass p-8 md:p-12 rounded-[40px] flex flex-col items-center max-w-4xl mx-auto">
-                <div class="w-full text-center">
-                    <div class="capsule-aerodynamic mb-6 max-w-[210px] mx-auto">
-                        <div class="marquee-text text-purple-400">En descenso • Esperando la señal •</div>
-                    </div>
-                    <h2 class="text-4xl md:text-6xl mb-8 italic font-black tracking-wide">CYBER VORTEX</h2>
-                    
-                    <div class="bg-white/5 p-6 rounded-3xl border border-white/10 mb-8">
-                        <div class="h-1 w-full bg-white/10 rounded-full mb-6 overflow-hidden">
-                            <div id="main-progress" class="h-full bg-gradient-to-r from-purple-500 to-cyan-500 w-0"></div>
-                        </div>
-                        <div class="flex items-center justify-center gap-6">
-                            <button onclick="toggleMainPlay()" class="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center hover:scale-110 transition">
-                                <i data-lucide="play" id="play-icon"></i>
-                            </button>
-                            <span id="current-time" class="font-mono text-xs text-gray-400">00:00 / 00:00</span>
-                        </div>
-                    </div>
-                    <a href="#" class="bg-purple-600 px-12 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-lg shadow-purple-500/20 hover:brightness-125 transition inline-block">Obtener Licencia — $49</a>
-                </div>
-            </div>
-        </div>
-        <audio id="featured-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-    </section>
-
-    <section id="shop" class="py-24 relative w-screen min-h-screen">
-        <div class="container mx-auto px-6">
-            <div class="mb-20">
-                <h2 class="text-2xl tracking-[0.3em] uppercase font-bold">Beat <span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">Store</span></h2>
-                <p class="text-gray-500 text-[10px] uppercase mt-2">Toque para activar la reacción táctil del contorno texturizado.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                <div class="gallery-item group">
-                    <div class="relative overflow-hidden glass rounded-tr-[80px] aspect-[4/5] border border-white/10 neon-border-glow">
-                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Neon Nights">
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
-                            <div class="marquee-text text-purple-400">Entre neblinas • Texturas Híbridas •</div>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
-                        </div>
-                    </div>
-                    <div class="mt-4 flex justify-between items-center px-2">
-                        <div>
-                            <h4 class="text-sm font-bold tracking-wide">NEON NIGHTS</h4>
-                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">140 BPM / PHONK</p>
-                        </div>
-                        <span style="color: var(--neon-cyan);" class="font-bold text-lg">$29</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item group">
-                    <div class="relative overflow-hidden glass rounded-2xl aspect-[4/5] border border-white/10 neon-border-glow">
-                        <img src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Liquid State">
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
-                            <div class="marquee-text text-cyan-400">Con sentimientos • Inmersivo •</div>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
-                        </div>
-                    </div>
-                    <div class="mt-4 flex justify-between items-center px-2">
-                        <div>
-                            <h4 class="text-sm font-bold tracking-wide" style="color: var(--neon-purple);">LIQUID STATE</h4>
-                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">128 BPM / TECHNO</p>
-                        </div>
-                        <span class="text-white font-bold text-lg">$35</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item group">
-                    <div class="relative overflow-hidden glass rounded-tl-[100px] aspect-[4/5] border border-white/10 neon-border-glow">
-                        <img src="https://images.unsplash.com/photo-1514525253361-bee8a48790c7?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Street Soul">
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
-                            <div class="marquee-text text-purple-400">Los ghetto • Elegancia Callejera •</div>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
-                        </div>
-                    </div>
-                    <div class="mt-4 flex justify-between items-center px-2">
-                        <div>
-                            <h4 class="text-sm font-bold tracking-wide">STREET SOUL</h4>
-                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">95 BPM / LO-FI</p>
-                        </div>
-                        <span style="color: var(--neon-cyan);" class="font-bold text-lg">$25</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item group">
-                    <div class="relative overflow-hidden glass rounded-br-[80px] aspect-[4/5] border border-white/10 neon-border-glow">
-                        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Sinfonía R&B">
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
-                            <div class="marquee-text text-cyan-400">Notas al viento • Sinfonía R&B •</div>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
-                        </div>
-                    </div>
-                    <div class="mt-4 flex justify-between items-center px-2">
-                        <div>
-                            <h4 class="text-sm font-bold tracking-wide">CYBER SYMPHONY</h4>
-                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">102 BPM / R&B NEON</p>
-                        </div>
-                        <span style="color: var(--neon-cyan);" class="font-bold text-lg">$39</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item group">
-                    <div class="relative overflow-hidden glass aspect-[4/5] border border-white/10 neon-border-glow" style="border-radius: 40px 0px 40px 0px;">
-                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Esencia R&B">
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
-                            <div class="marquee-text text-purple-400">En estado puro • Esencia R&B •</div>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
-                        </div>
-                    </div>
-                    <div class="mt-4 flex justify-between items-center px-2">
-                        <div>
-                            <h4 class="text-sm font-bold tracking-wide" style="color: var(--neon-purple);">PURE ESSENCE</h4>
-                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">96 BPM / INDIE SOUL</p>
-                        </div>
-                        <span class="text-white font-bold text-lg">$42</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item group">
-                    <div class="relative overflow-hidden glass rounded-bl-[80px] aspect-[4/5] border border-white/10 neon-border-glow">
-                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition duration-500" alt="Atmósfera">
-                        <div class="absolute bottom-4 left-4 z-20 capsule-aerodynamic max-w-[160px]">
-                            <div class="marquee-text text-cyan-400">En la atmósfera • Sub-Zero Vol •</div>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <button class="bg-white text-black p-4 rounded-full hover:scale-110 transition"><i data-lucide="play"></i></button>
-                        </div>
-                    </div>
-                    <div class="mt-4 flex justify-between items-center px-2">
-                        <div>
-                            <h4 class="text-sm font-bold tracking-wide">NEON ECLIPSE</h4>
-                            <p class="text-[9px] text-gray-500 uppercase tracking-widest">134 BPM / PHONK TRAP</p>
-                        </div>
-                        <span style="color: var(--neon-cyan);" class="font-bold text-lg">$34</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="video-modal" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md hidden justify-center items-center p-4">
-        <div class="relative w-full max-w-3xl aspect-video glass rounded-2xl overflow-hidden border border-white/20">
-            <button onclick="closeVideoModal()" class="absolute top-4 right-4 bg-black/60 text-white p-2 rounded-full hover:bg-white hover:text-black transition z-50">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-            <iframe id="modal-iframe" class="w-full h-full" src="" title="Reproductor de Video Integrado" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <footer class="py-12 border-t border-white/5 text-center text-[10px] tracking-[0.4em] text-gray-600">
-        &copy; 2026 PRODNAME STUDIO | VANGUARD EDITION
-    </footer>
-
-    <script>
-        // Inicializar Iconografía Lucide
-        lucide.createIcons();
-
-        // Control Dinámico del Cursor Estilizado
-        const dot = document.querySelector('.cursor-dot');
-        const outline = document.querySelector('.cursor-outline');
-
-        window.addEventListener('mousemove', (e) => {
-            dot.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
-            outline.animate(
-                { transform: `translate(${e.clientX - 17}px, ${e.clientY - 17}px)` }, 
-                { duration: 240, fill: "forwards" }
-            );
-        });
-
-        document.querySelectorAll('a, button, .gallery-item').forEach(el => {
-            el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));
-            el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
-        });
-
-        // --- SISTEMA INTELLIGENT SCROLL ZOOM (Ratón y Táctil Multifinger) ---
-        const heroImg = document.getElementById('hero-img');
-        let currentScale = 1.0;
-        const maxScale = 2.5;
-        const minScale = 1.0;
-
-        // Control por rueda del ratón en zona Hero
-        window.addEventListener('wheel', (e) => {
-            if (window.scrollY < window.innerHeight / 2) { 
-                e.preventDefault(); 
-                currentScale += e.deltaY * -0.0018;
-                currentScale = Math.max(minScale, Math.min(maxScale, currentScale));
-                heroImg.style.transform = `scale(${currentScale})`;
-            }
-        }, { passive: false });
-
-        // Control por gesto táctil de pinza (Zoom táctil nativo)
-        let touchStartDist = 0;
-        window.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 2) {
-                touchStartDist = Math.hypot(
-                    e.touches[0].clientX - e.touches[1].clientX,
-                    e.touches[0].clientY - e.touches[1].clientY
-                );
-            }
-        });
-
-        window.addEventListener('touchmove', (e) => {
-            if (e.touches.length === 2 && window.scrollY < window.innerHeight / 2) {
-                const currentDist = Math.hypot(
-                    e.touches[0].clientX - e.touches[1].clientX,
-                    e.touches[0].clientY - e.touches[1].clientY
-                );
-                const delta = (currentDist - touchStartDist) * 0.006;
-                currentScale = Math.max(minScale, Math.min(maxScale, currentScale + delta));
-                heroImg.style.transform = `scale(${currentScale})`;
-                touchStartDist = currentDist;
-            }
-        });
-
-        // Parallax Suave Sincronizado para Textos
-        window.addEventListener('scroll', () => {
-            const y = window.scrollY;
-            const isMobile = window.innerWidth < 768;
-            const m = isMobile ? 0 : 1;
-            if(document.querySelector('.vanguard-title')) {
-                document.querySelector('.vanguard-title').style.transform = `translateY(${y * 0.14 * m}px)`;
-            }
-        });
-
-        // Gestión del Reproductor de Audio Semanal
-        const audio = document.getElementById('featured-audio');
-        const progress = document.getElementById('main-progress');
-        const timeText = document.getElementById('current-time');
-        const playIcon = document.getElementById('play-icon');
-
-        function formatTime(secs) {
-            let minutes = Math.floor(secs / 60);
-            let seconds = Math.floor(secs % 60);
-            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-
-        function toggleMainPlay() {
-            if (audio.paused) {
-                audio.play();
-                playIcon.setAttribute('data-lucide', 'pause');
-            } else {
-                audio.pause();
-                playIcon.setAttribute('data-lucide', 'play');
-            }
-            lucide.createIcons();
-        }
-
-        audio.addEventListener('loadedmetadata', () => {
-            timeText.innerText = `0:00 / ${formatTime(audio.duration)}`;
-        });
-
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
-                const pct = (audio.currentTime / audio.duration) * 100;
-                progress.style.width = pct + '%';
-                timeText.innerText = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
-            }
-        });
-
-        // --- MANEJO DEL MODAL DE VIDEO INTEGRADO ---
-        const videoModal = document.getElementById('video-modal');
-        const modalIframe = document.getElementById('modal-iframe');
-
-        function openVideoModal(videoUrl) {
-            modalIframe.src = videoUrl;
-            videoModal.style.display = 'flex';
-        }
-
-        function closeVideoModal() {
-            videoModal.style.display = 'none';
-            modalIframe.src = ''; // Limpia el buffer para detener el audio al cerrar
-        }
-    </script>
+<body>
+    <!-- CARRUSEL VERTICAL DE ALTA DEFINICIÓN (12 IMÁGENES) -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            
+            <!-- DIAPOSITIVA 1: EL MANIFIESTO -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Nace el R&ndie</h1>
+                    <p class="poesia-text">"La colisión perfecta entre la crudeza pura del Drill y la poesía etérea del Indie Pop."</p>
+                    <a href="#next" class="boton-alta-gama" onclick="swiper.slideNext(); return false;">Sumergirse</a>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 2: LAS MELODÍAS -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Sinfonía R&ndie</h1>
+                    <p class="poesia-text">"Armonías de Soul arrastradas por ritmos urbanos que acarician el abismo."</p>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 3: PROFUNDIDAD SENSORIAL -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Elegancia Callejera</h1>
+                    <p class="poesia-text">"Pinceladas de seda negra sobre frecuencias subterráneas."</p>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 4: IDENTIDAD URBANA -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Esencia R&ndie</h1>
+                    <p class="poesia-text">"Cuando el latido del Drill se rinde ante la vulnerabilidad del R&B acústico."</p>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 5: PUREZA CRUDA -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1516280440614-37939bbacd6a?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Texturas Híbridas</h1>
+                    <p class="poesia-text">"Sonidos aterciopelados flotando sobre bajos que hacen temblar el cemento."</p>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 6: EL NUEVO CULTO -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Vanguardia Estética</h1>
+                    <p class="poesia-text">"La sofisticación no se grita, se susurra sobre una base de Soul contemporáneo."</p>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 7: DINÁMICA ATMOSFÉRICA -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Luz Liliácea</h1>
+                    <p class="poesia-text">"Destellos de neón que cortan la sobriedad de una noche eterna."</p>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 8: REVOLUCIÓN SONORA -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1487180142328-054b783fc471?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Manifiesto R&ndie</h1>
+                    <p class="poesia-text">"No seguimos tendencias. Rompemos las reglas del género para crear un refugio."</p>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 9: PASARELA DIGITAL -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Diseño y Gravedad</h1>
+                    <p class="poesia-text">"El mega espacio que aloja los sentimientos más profundos del artista."</p>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 10: EL ECO DEL SOUL -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Frecuencia Turquesa</h1>
+                    <p class="poesia-text">"Donde las voces melancólicas encuentran su ritmo en el asfalto."</p>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 11: RAÍCES SUTILES -->
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?q=80&w=1920');">
+                <div class="manifiesto-artistico">
+                    <h1>Identidad Visual</h1>
+                    <p class="poesia-text">"Siluetas perfectas que emergen del vacío marfil."</p>
+                </div>
+            </div>
+            <!-- DIAPOSITIVA 12: EXPERIENCIA FINAL (CONTACTO Y REDES) -->
+            <div class="swiper-slide slide-final" style="background-image: url('https://images.unsplash.com/photo-1453733190148-c44698c26588?q=80&w=1920');">
+                <div class="grid-final">
+                    <div style="text-align: center;">
+                        <h2 style="font-size: 1.8rem; text-transform: uppercase; margin-bottom: 10px;">Forma parte del movimiento</h2>
+                        <p class="poesia-text" style="color: #cbd5e1; font-size: 1.1rem; margin: 0;">Contacto exclusivo & Booking</p>
+                    </div>
+                    <!-- Formulario de Alto Standing -->
+                    <form class="formulario-lujo" onsubmit="event.preventDefault(); alert('Mensaje sintonizado con el R&ndie.');">
+                        <input type="text" placeholder="NOMBRE / FIRMA" required>
+                        <input type="email" placeholder="CORREO ELECTRÓNICO" required>
+                        <textarea placeholder="MENSAJE / PROPUESTA ARTÍSTICA" rows="3" required></textarea>
+                        <div style="text-align: right;">
+                            <button type="submit" class="boton-alta-gama" style="margin: 0; padding: 8px 25px;">Enviar</button>
+                        </div>
+                    </form>
+                    <!-- Redes Sociales de Lujo -->
+                    <div class="redes-container">
+                        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://spotify.com" target="_blank"><i class="fa-brands fa-spotify"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://soundcloud.com" target="_blank"><i class="fa-brands fa-soundcloud"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Flechas de navegación verticales -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <!-- ASISTENTE DE IA DE ALTA GAMA -->
+    <div class="ia-widget-boton" id="botonIA">
+        <i class="fa-solid fa-signature"></i>
+    </div>
+    <div class="ia-chat-ventana" id="ventanaIA">
+        <div class="ia-chat-header">
+            <span style="font-family:'Cinzel'; font-size: 11px; letter-spacing: 2px;">R&ndie Oracle</span>
+            <div id="cerrarIA" style="cursor:pointer; opacity:0.5;"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="ia-chat-mensajes" id="contenedorMensajes">
+            <div class="mensaje msg-ia">
+                Has entrado a la dimensión del R&ndie. Dime, ¿qué vibración buscas experimentar hoy en esta fusión de géneros?
+            </div>
+        </div>
+        <div class="ia-chat-input-area">
+            <input type="text" id="inputUsuario" placeholder="Escribe tus sentimientos..." autocomplete="off">
+            <button id="btnEnviar">Sintonizar</button>
+        </div>
+    </div>
+    <!-- MOTORES JAVASCRIPT RECONFIGURADOS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        /* Desplazamiento Vertical Premium */
+        const swiper = new Swiper(".mySwiper", {
+            direction: "vertical",
+            loop: false, /* Desactivado loop para que la pantalla 12 de contacto sea el destino final claro */
+            speed: 1500,
+            effect: "slide",
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            keyboard: { enabled: true },
+            mousewheel: { invert: false },
+        });
+        /* Lógica del Oráculo IA */
+        const botonIA = document.getElementById('botonIA');
+        const ventanaIA = document.getElementById('ventanaIA');
+        const cerrarIA = document.getElementById('cerrarIA');
+        const btnEnviar = document.getElementById('btnEnviar');
+        const inputUsuario = document.getElementById('inputUsuario');
+        const contenedorMensajes = document.getElementById('contenedorMensajes');
+        botonIA.addEventListener('click', () => { ventanaIA.style.display = (ventanaIA.style.display === 'flex') ? 'none' : 'flex'; });
+        cerrarIA.addEventListener('click', () => { ventanaIA.style.display = 'none'; });
+        function agregarMensaje(texto, remitente) {
+            const div = document.createElement('div');
+            div.classList.add('mensaje', remitente === 'ia' ? 'msg-ia' : 'msg-usuario');
+            div.innerText = texto;
+            contenedorMensajes.appendChild(div);
+            contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+        }
+        function procesarRespuestaIA(mensajeUsuario) {
+            const texto = mensajeUsuario.toLowerCase();
+            setTimeout(() => {
+                if(texto.includes('r&ndie') || texto.includes('genero') || texto.includes('musica')) {
+                    agregarMensaje("El R&ndie es el nacimiento de una era: la crudeza del Drill rindiéndose ante el alma del Indie y el R&B.", "ia");
+                } else if (texto.includes('soul') || texto.includes('drill')) {
+                    agregarMensaje("Esa combinación rompe moldes. Las pinceladas de Soul elevan la pesadez rítmica del Drill a una obra de alta costura.", "ia");
+                } else {
+                    agregarMensaje("Tus palabras vibran en la sintonía del R&ndie. Sigue deslizando para absorber la profundidad completa del artista.", "ia");
+                }
+            }, 1000);
+        }
+        function gestionarEnvio() {
+            const mensaje = inputUsuario.value.trim();
+            if(mensaje !== "") {
+                agregarMensaje(mensaje, 'usuario');
+                inputUsuario.value = "";
+                procesarRespuestaIA(mensaje);
+            }
+        }
+        btnEnviar.addEventListener('click', gestionarEnvio);
+        inputUsuario.addEventListener('keypress', (e) => { if(e.key === 'Enter') gestionarEnvio(); });
+    </script>
 </body>
 </html>

@@ -1,409 +1,429 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espacio de Artista Principal - Dimensión Sonora</title>
-    
-    <!-- Librería externa: Estilos para el efecto de pantalla completa (Swiper) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
-    <!-- Iconos para la interfaz del Chatbot de IA -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- ==========================================
-         DISEÑO Y ESTILOS AVANZADOS (CSS)
-         ========================================== -->
-    <style>
-        /* Estilos Generales y Reset */
-        html, body {
-            position: relative;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #030303;
-            color: #ffffff;
-            overflow: hidden;
-        }
-        /* Contenedor del Carrusel a Pantalla Completa */
-        .swiper {
-            width: 100vw;
-            height: 100vh;
-        }
-        /* Configuración de las Diapositivas de fondo en dirección vertical */
-        .swiper-slide {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end; /* Empuja el contenido hacia la zona baja */
-            position: relative;
-            background-color: #030303;
-            background-repeat: no-repeat;
-            background-position: center center;
-            /* 'contain' asegura que las fotos de cuerpo completo salgan enteras sin cortarse */
-            background-size: contain; 
-            height: 100vh;
-            width: 100vw;
-        }
-        /* Capa superpuesta estilizada: Protege la legibilidad abajo sin saturar el centro de la foto */
-        .swiper-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(0deg, rgba(3,3,3,0.95) 0%, rgba(3,3,3,0.4) 50%, rgba(3,3,3,0.7) 100%);
-            z-index: 1;
-        }
-        /* Bloque de Contenido Artístico en la Zona Baja */
-        .contenido-artistico {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            width: 90%;
-            margin-bottom: 60px; /* Separación prudente del borde inferior */
-            padding: 25px 35px;
-            background: rgba(255, 255, 255, 0.01);
-            border-radius: 20px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            
-            /* Aplicación del movimiento sutil en las letras */
-            animation: floatingText 4s ease-in-out infinite;
-        }
-        /* Animación de movimiento poético sutil para las letras */
-        @keyframes floatingText {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-        .contenido-artistico h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            line-height: 1.3;
-            background: linear-gradient(45deg, #ffffff, #d8b4fe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .contenido-artistico p {
-            font-size: 1.15rem;
-            line-height: 1.6;
-            color: #cbd5e1;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-        /* Botón de Acción Armonizado */
-        .boton-musica {
-            display: inline-block;
-            padding: 10px 28px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #000000;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border-radius: 25px;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        .boton-musica:hover {
-            background: #c084fc;
-            color: #ffffff;
-            box-shadow: 0 0 15px rgba(192, 132, 252, 0.5);
-        }
-        /* Flechas de navegación adaptadas al flujo vertical (arriba/abajo) */
-        .swiper-button-next, .swiper-button-prev {
-            color: #ffffff !important;
-            opacity: 0.3;
-            transition: opacity 0.3s;
-            left: 50% !important;
-            transform: translateX(-50%);
-        }
-        
-        /* Reubicación de las flechas para el desplazamiento vertical */
-        .swiper-button-prev {
-            top: 40px !important;
-            transform: translateX(-50%) rotate(90deg);
-        }
-        .swiper-button-next {
-            top: auto !important;
-            bottom: 20px !important;
-            transform: translateX(-50%) rotate(90deg);
-        }
-        .swiper-button-next:hover, .swiper-button-prev:hover {
-            opacity: 0.8;
-        }
-        /* ==========================================
-           INTERFAZ DEL ASISTENTE DE IA (CHATBOT)
-           ========================================== */
-        .ia-widget-boton {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, #baf825 0%, #a855f7 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            color: white;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
-            z-index: 9999;
-            transition: transform 0.3s ease;
-        }
-        .ia-widget-boton:hover {
-            transform: scale(1.08);
-        }
-        .ia-chat-ventana {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 340px;
-            height: 450px;
-            background: rgba(10, 10, 15, 0.96);
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            display: none;
-            flex-direction: column;
-            z-index: 9998;
-            overflow: hidden;
-            backdrop-filter: blur(12px);
-        }
-        .ia-chat-header {
-            background: rgba(168, 85, 247, 0.1);
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .ia-perfil {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .ia-perfil i {
-            color: #c084fc;
-            font-size: 18px;
-        }
-        .ia-nombre {
-            font-weight: 600;
-            font-size: 13.5px;
-            letter-spacing: 0.5px;
-        }
-        .ia-estado {
-            font-size: 11px;
-            color: #4ade80;
-            display: block;
-        }
-        .ia-cerrar {
-            cursor: pointer;
-            opacity: 0.6;
-        }
-        .ia-chat-mensajes {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .mensaje {
-            padding: 10px 14px;
-            border-radius: 12px;
-            font-size: 13px;
-            line-height: 1.4;
-            max-width: 80%;
-        }
-        .msg-ia {
-            background: rgba(255, 255, 255, 0.06);
-            align-self: flex-start;
-            border-bottom-left-radius: 2px;
-            color: #f1f5f9;
-        }
-        .msg-usuario {
-            background: #a855f7;
-            align-self: flex-end;
-            border-bottom-right-radius: 2px;
-            color: #ffffff;
-        }
-        .ia-chat-input-area {
-            padding: 12px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            display: flex;
-            gap: 8px;
-            background: rgba(0, 0, 0, 0.3);
-        }
-        .ia-chat-input-area input {
-            flex: 1;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 10px 14px;
-            border-radius: 20px;
-            color: white;
-            font-size: 13px;
-            outline: none;
-        }
-        .ia-chat-input-area input:focus {
-            border-color: #c084fc;
-        }
-        .ia-chat-input-area button {
-            background: #a855f7;
-            border: none;
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dimensión Sonora</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+height:100vh;
+overflow:hidden;
+font-family:'Inter',sans-serif;
+background:#000;
+color:#fff;
+}
+
+.swiper{
+width:100vw;
+height:100vh;
+}
+
+.swiper-slide{
+position:relative;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+padding-bottom:10px;
+background-size:cover;
+background-position:center;
+overflow:hidden;
+}
+
+.swiper-slide::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(
+0deg,
+rgba(0,0,0,.72) 0%,
+rgba(0,0,0,.08) 42%,
+rgba(0,0,0,.45) 100%
+);
+z-index:1;
+}
+
+.swiper-slide::after{
+content:'';
+position:absolute;
+inset:-5%;
+background-image:inherit;
+background-size:cover;
+background-position:center;
+animation:zoom 12s ease-in-out infinite alternate;
+z-index:0;
+}
+
+@keyframes zoom{
+from{transform:scale(1.05);}
+to{transform:scale(1.15) translateY(-10px);}
+}
+
+.contenido{
+position:relative;
+z-index:2;
+width:88%;
+max-width:760px;
+text-align:left;
+padding:42px 46px;
+backdrop-filter:blur(7px);
+background:rgba(255,255,255,.008);
+border:1px solid rgba(255,255,255,.05);
+border-radius:30px;
+box-shadow:0 8px 35px rgba(0,0,0,.18);
+animation:float 5s ease-in-out infinite;
+align-self:flex-end;
+margin-bottom:12px;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-8px);}
+100%{transform:translateY(0px);}
+}
+
+h1{
+max-width:620px;
+font-family:'Cinzel',serif;
+font-size:2.5rem;
+margin-bottom:18px;
+line-height:1.2;
+background:linear-gradient(45deg,#fff,#d8b4fe,#baf825);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+p{
+max-width:560px;
+font-size:1.1rem;
+line-height:1.8;
+color:#ddd;
+margin-bottom:32px;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:14px 30px;
+border-radius:40px;
+background:linear-gradient(135deg,#fff,#d8b4fe);
+color:#111;
+font-weight:700;
+text-decoration:none;
+transition:.35s ease;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+box-shadow:0 0 25px rgba(192,132,252,.45);
+}
+
+.swiper-button-next,.swiper-button-prev{
+color:#fff !important;
+left:50% !important;
+opacity:.45;
+}
+
+.swiper-button-prev{
+top:30px !important;
+transform:translateX(-50%) rotate(90deg);
+}
+
+.swiper-button-next{
+bottom:20px !important;
+top:auto !important;
+transform:translateX(-50%) rotate(90deg);
+}
+
+.player{
+position:fixed;
+top:18px;
+left:50%;
+transform:translateX(-50%);
+z-index:99999;
+width:320px;
+}
+
+.ia-btn{
+position:fixed;
+right:25px;
+bottom:90px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:linear-gradient(135deg,#baf825,#a855f7);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+cursor:pointer;
+z-index:9999;
+box-shadow:0 10px 30px rgba(168,85,247,.45);
+}
+
+.chat{
+position:fixed;
+right:25px;
+bottom:165px;
+width:360px;
+height:500px;
+background:rgba(5,5,10,.94);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.05);
+border-radius:24px;
+display:none;
+flex-direction:column;
+overflow:hidden;
+z-index:9998;
+}
+
+.chat-header{
+padding:16px;
+border-bottom:1px solid rgba(255,255,255,.08);
+display:flex;
+justify-content:space-between;
+}
+
+.chat-body{
+flex:1;
+overflow:auto;
+padding:16px;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.msg{
+padding:12px 14px;
+border-radius:16px;
+max-width:80%;
+font-size:13px;
+line-height:1.5;
+}
+
+.ia{background:rgba(255,255,255,.06);}
+.user{background:#a855f7;align-self:flex-end;}
+
+.chat-input{
+display:flex;
+gap:10px;
+padding:14px;
+border-top:1px solid rgba(255,255,255,.06);
+}
+
+.chat-input input{
+flex:1;
+padding:12px;
+border-radius:30px;
+border:none;
+background:rgba(255,255,255,.05);
+color:white;
+}
+
+.chat-input button{
+width:42px;
+height:42px;
+border-radius:50%;
+border:none;
+background:#a855f7;
+color:white;
+}
+
+@media(max-width:768px){
+.contenido{
+padding:28px;
+text-align:center;
+}
+
+h1{
+max-width:100%;
+}
+
+p{
+max-width:100%;
+}
+
+.chat{
+width:92%;
+right:4%;
+height:70vh;
+}
+
+h1{
+font-size:1.8rem;
+}
+
+p{
+font-size:.95rem;
+}
+}
+</style>
 </head>
 <body>
-    <!-- ==========================================
-         CARRUSEL VERTICAL COMPLETO (SWIPER)
-         ========================================== -->
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            
-            <!-- PÁGINA 1: ARMONÍA DEL MUNDO -->
-            <!-- Nota técnica: Reemplaza estas URLs de prueba por las fotos verticales de cuerpo completo del artista -->
-            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000');">
-                <div class="contenido-artistico">
-                    <h1>Construye el ritmo sonoro de tu mundo</h1>
-                    <p>Con armonías y melodías humanamente perfectas. La música en otra dimensión sensorial que acaricia tus oídos.</p>
-                    <a href="#escuchar" class="boton-musica">Iniciar Viaje</a>
-                </div>
-            </div>
-            <!-- PÁGINA 2: INTROSPECCIÓN INTERIOR -->
-            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1000');">
-                <div class="contenido-artistico">
-                    <h1>Transpórtate a ese otro interior de ti mismo</h1>
-                    <p>Siente que las conexiones con la música son para ti y tus emociones.</p>
-                    <a href="#experiencia" class="boton-musica">Conectarse</a>
-                </div>
-            </div>
-            <!-- PÁGINA 3: LIBERTAD Y SENSACIONES -->
-            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000');">
-                <div class="contenido-artistico">
-                    <h1>Desata tu mar de sensaciones</h1>
-                    <p>Y dirige los sentimientos hacia un horizonte de libertad donde la música adorne los deseos.</p>
-                    <a href="#libertad" class="boton-musica">Descubrir Libertad</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Flechas de navegación orientadas verticalmente -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
-    <!-- ==========================================
-         ASISTENTE DE IA INTEGRADO
-         ========================================== -->
-    <div class="ia-widget-boton" id="botonIA">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-    </div>
-    <div class="ia-chat-ventana" id="ventanaIA">
-        <div class="ia-chat-header">
-            <div class="ia-perfil">
-                <i class="fa-solid fa-om"></i>
-                <div>
-                    <span class="ia-nombre">Guía Sensorial IA</span>
-                    <span class="ia-estado">sintonizando tus emociones</span>
-                </div>
-            </div>
-            <div class="ia-cerrar" id="cerrarIA">
-                <i class="fa-solid fa-xmark"></i>
-            </div>
-        </div>
-        
-        <div class="ia-chat-mensajes" id="contenedorMensajes">
-            <div class="mensaje msg-ia">
-                Hola. He percibido tu entrada a esta dimensión sonora. ¿Qué tipo de sensaciones o deseos buscas despertar en tu interior a través de nuestra música hoy?
-            </div>
-        </div>
-        <div class="ia-chat-input-area">
-            <input type="text" id="inputUsuario" placeholder="Escribe tus sentimientos o preguntas aquí..." autocomplete="off">
-            <button id="btnEnviar"><i class="fa-solid fa-paper-plane"></i></button>
-        </div>
-    </div>
-    <!-- ==========================================
-         MOTORES JAVASCRIPT RECONFIGURADOS
-         ========================================== -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        /* 1. CONFIGURACIÓN DEL DESLIZADOR EN DIRECCIÓN VERTICAL */
-        const swiper = new Swiper(".mySwiper", {
-            direction: "vertical", /* Hace que cambie de arriba a abajo */
-            loop: true,
-            speed: 1400, /* Transición ligeramente más lenta para mayor elegancia artística */
-            effect: "slide",
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            keyboard: {
-                enabled: true,
-            },
-            mousewheel: {
-                invert: false, /* Permite pasar de pantalla usando la rueda del ratón */
-            },
-        });
-        /* 2. LÓGICA DEL ASISTENTE SENSORIAL DE IA */
-        const botonIA = document.getElementById('botonIA');
-        const ventanaIA = document.getElementById('ventanaIA');
-        const cerrarIA = document.getElementById('cerrarIA');
-        const btnEnviar = document.getElementById('btnEnviar');
-        const inputUsuario = document.getElementById('inputUsuario');
-        const contenedorMensajes = document.getElementById('contenedorMensajes');
-        botonIA.addEventListener('click', () => {
-            ventanaIA.style.display = (ventanaIA.style.display === 'flex') ? 'none' : 'flex';
-        });
-        cerrarIA.addEventListener('click', () => {
-            ventanaIA.style.display = 'none';
-        });
-        function agregarMensaje(texto, remitente) {
-            const div = document.createElement('div');
-            div.classList.add('mensaje', remitente === 'ia' ? 'msg-ia' : 'msg-usuario');
-            div.innerText = texto;
-            contenedorMensajes.appendChild(div);
-            contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
-        }
-        function procesarRespuestaIA(mensajeUsuario) {
-            const texto = mensajeUsuario.toLowerCase();
-            
-            setTimeout(() => {
-                if(texto.includes('mundo') || texto.includes('ritmo') || texto.includes('armonia') || texto.includes('melodia')) {
-                    agregarMensaje("El ritmo de tu mundo se expande cuando te permites escuchar sin juzgar. Nuestras melodías están diseñadas para equilibrar tus frecuencias internas.", "ia");
-                } else if (texto.includes('interior') || texto.includes('emocion') || texto.includes('conectar') || texto.includes('sentir')) {
-                    agregarMensaje("La música es el puente directo hacia tu verdadero ser. Al conectar tus emociones con estas frecuencias, permites que tu interior se exprese libremente.", "ia");
-                } else if (texto.includes('libertad') || texto.includes('mar') || texto.includes('sensacion') || texto.includes('deseo')) {
-                    agregarMensaje("Desatar ese mar de sensaciones es el primer paso. El horizonte de libertad te espera cuando dejas que la música guíe y adorne tus deseos más profundos.", "ia");
-                } else {
-                    agregarMensaje("Tus palabras resuenan en esta dimensión sensorial. Permítete cerrar los ojos, respirar y dejar que la armonía acaricie tus oídos.", "ia");
-                }
-            }, 1000);
-        }
-        function gestionarEnvio() {
-            const mensaje = inputUsuario.value.trim();
-            if(mensaje !== "") {
-                agregarMensaje(mensaje, 'usuario');
-                inputUsuario.value = "";
-                procesarRespuestaIA(mensaje);
-            }
-        }
-        btnEnviar.addEventListener('click', gestionarEnvio);
-        inputUsuario.addEventListener('keypress', (e) => {
-            if(e.key === 'Enter') gestionarEnvio();
-        });
-    </script>
+
+<audio class="player" controls autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=ambient-piano-logo-165357.mp3" type="audio/mpeg">
+</audio>
+
+<div class="swiper mySwiper">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1400');">
+<div class="contenido">
+<h1>Construye el ritmo sonoro de tu mundo</h1>
+<p>
+Una experiencia inmersiva donde la música transforma emociones en paisajes sensoriales.
+Déjate envolver lentamente por armonías diseñadas para conectar con tu esencia.
+</p>
+<a href="#" class="btn"><i class="fa-solid fa-play"></i>Iniciar Viaje</a>
+</div>
+</div>
+
+<div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1400');">
+<div class="contenido">
+<h1>Explora tu dimensión interior</h1>
+<p>
+Cada frecuencia conecta con recuerdos, emociones y deseos ocultos.
+Las melodías abren espacios íntimos donde el silencio y la emoción se encuentran.
+</p>
+<a href="#" class="btn"><i class="fa-solid fa-wave-square"></i>Conectarse</a>
+</div>
+</div>
+
+<div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1400');">
+<div class="contenido">
+<h1>Desata tu mar de sensaciones</h1>
+<p>
+Permite que el sonido te guíe hacia un horizonte de libertad emocional.
+Cada nota expande tus sentidos hasta convertirlos en movimiento y energía.
+</p>
+<a href="#" class="btn"><i class="fa-solid fa-music"></i>Descubrir</a>
+</div>
+</div>
+
+<div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1400');">
+<div class="contenido">
+<h1>Escucha la gravedad de cada nota</h1>
+<p>
+Frecuencias profundas atraviesan el cuerpo y despiertan nuevas realidades interiores.
+La vibración sonora transforma cada instante en una experiencia casi cinematográfica.
+</p>
+<a href="#" class="btn"><i class="fa-solid fa-headphones"></i>Sumergirse</a>
+</div>
+</div>
+
+<div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1400');">
+<div class="contenido">
+<h1>Convierte emociones en movimiento</h1>
+<p>
+La energía sonora transforma silencios en pulsaciones llenas de vida y expansión.
+Un viaje visual y auditivo donde cada emoción encuentra su propio ritmo.
+</p>
+<a href="#" class="btn"><i class="fa-solid fa-bolt"></i>Expandir</a>
+</div>
+</div>
+
+<div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1499364615650-ec38552f4f34?q=80&w=1400');">
+<div class="contenido">
+<h1>Habita un universo de luz y sonido</h1>
+<p>
+Una dimensión inmersiva donde cada melodía construye paisajes visuales y emocionales.
+La música deja de escucharse para comenzar a sentirse en cada espacio del entorno.
+</p>
+<a href="#" class="btn"><i class="fa-solid fa-star"></i>Entrar</a>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<div class="ia-btn" id="openChat">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+</div>
+
+<div class="chat" id="chat">
+<div class="chat-header">
+<strong>Guía Sensorial IA</strong>
+<i class="fa-solid fa-xmark" id="closeChat" style="cursor:pointer"></i>
+</div>
+
+<div class="chat-body" id="chatBody">
+<div class="msg ia">
+He percibido tu llegada a esta dimensión sonora. ¿Qué emociones deseas despertar hoy?
+</div>
+</div>
+
+<div class="chat-input">
+<input id="input" placeholder="Escribe tus emociones...">
+<button id="send"><i class="fa-solid fa-paper-plane"></i></button>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+new Swiper('.mySwiper',{
+direction:'vertical',
+loop:true,
+speed:1600,
+mousewheel:true,
+keyboard:true,
+navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}
+});
+
+const chat=document.getElementById('chat');
+const openChat=document.getElementById('openChat');
+const closeChat=document.getElementById('closeChat');
+const send=document.getElementById('send');
+const input=document.getElementById('input');
+const chatBody=document.getElementById('chatBody');
+
+openChat.onclick=()=>{
+chat.style.display=chat.style.display==='flex'?'none':'flex';
+}
+
+closeChat.onclick=()=> chat.style.display='none';
+
+function addMessage(text,type){
+const div=document.createElement('div');
+div.className=`msg ${type}`;
+div.innerText=text;
+chatBody.appendChild(div);
+chatBody.scrollTop=chatBody.scrollHeight;
+}
+
+function answer(text){
+setTimeout(()=>{
+let r='Tus emociones están resonando con esta dimensión sonora.';
+if(text.includes('triste')) r='Las frecuencias suaves pueden ayudarte a reconstruirte lentamente.';
+if(text.includes('energ')) r='Tu energía está expandiéndose. Permite que el ritmo la transforme.';
+if(text.includes('libertad')) r='La libertad comienza cuando tus emociones encuentran un sonido propio.';
+addMessage(r,'ia');
+},1000)
+}
+
+function sendMsg(){
+const text=input.value.trim();
+if(!text) return;
+addMessage(text,'user');
+input.value='';
+answer(text.toLowerCase());
+}
+
+send.onclick=sendMsg;
+input.addEventListener('keypress',e=>{
+if(e.key==='Enter') sendMsg();
+});
+</script>
 </body>
 </html>
